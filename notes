@@ -1,0 +1,35 @@
+API - application program interface
+    - consuming api means we hit certain parts of API where theres info & bring that info into our own app
+    - help save us code, reusing existing code and faster for optimizing our app
+Directory: Project folder, belongs on computer - documentation
+Cloud: Github, repository, push project into so available online
+
+1. Build CLI
+2. Welcome user, prompt to either select a list, or tell exit if want (1 interaction)
+3. if they select list, print the list of breweries
+    1. brewery name etc.
+4. they can select brewery by name and print details of that brewery (second interaction)
+5. if they select exit, tell goodbye, exit program
+6. What if user wants to go back and see another brewery's details?
+    Don't make them exit and then re-run it
+
+*Prompt user to select something twice, and print out something based on those selections
+
+What will your app do?
+
+What is the user experience?
+
+Where will you get your data from?
+
+https://www.openbrewerydb.org/
+    https://www.openbrewerydb.org/documentation/01-listbreweries
+What will you need to do with the data once you've got it?
+
+What classes will you be using?
+    3 classes: (separation of responsibilities)
+    CLI - controller - communicates with my user
+    brewery - where objects are created & stored for user display
+    API - bring in external data, consume api here & instantiate my objects
+
+How will you display data one level deep to the user?
+
