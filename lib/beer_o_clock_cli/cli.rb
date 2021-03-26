@@ -6,11 +6,11 @@ class BeerOClockCli::CLI
         puts "Hey mate! Welcome to the Beer Hub!"
         puts "Are you trying to find the next spot to grab a brewski?"
         puts "If so, what's your name?"
+        API.get_data
         greet(user_input)
         # once new session of CLI is instantiated,
             # invoke & collect API data
-            # then get it availiable for this app
-        API.get_data    
+            # then get it availiable for this app    
         # menu
         puts ""
     end
@@ -55,7 +55,7 @@ class BeerOClockCli::CLI
             # creating incrementing index list, use index location of array
                 puts "#{index}. #{brewery.name}"
             end
-            #puts "" # use empty strings to provide spaces
+            puts "" # use empty strings to provide spaces
             # create 2nd layer of communication
             puts "Which brewery would you like details about?"
             input = gets.strip.downcase
