@@ -43,6 +43,7 @@ class Brewery
 
     def self.find_by_name(name)
         # iterate over brewery array, #find to find brewery selected by name
+        # find returns first match
         self.all.select do |brewery|
             brewery.name.downcase == name
         end

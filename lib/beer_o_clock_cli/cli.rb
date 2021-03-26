@@ -53,6 +53,7 @@ class BeerOClockCli::CLI
                 # each brewery has attributes, so list by name attribute only
             # .each_with_index would start at 0, instead of the 1
             # creating incrementing index list, use index location of array
+                puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
                 puts "#{index}. #{brewery.name}"
             end
             puts "" # use empty strings to provide spaces
