@@ -57,11 +57,11 @@ class BeerOClockCli::CLI
                 puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
                 puts "#{index}. #{brewery.name}"
             end
-            puts "" # use empty strings to provide spaces
+            #puts "" # use empty strings to provide spaces
             # create 2nd layer of communication
-            puts "Which brewery would you like details about?"
-            input = gets.strip.downcase
-            brewery_chosen(input)
+            #puts "Which brewery would you like details about?"
+            #input = gets.strip.downcase
+            brewery_chosen#(input)
             # if input == Brewery.find_by_name(input)
             #     brewery_chosen(input)
             # elsif input == exit
@@ -74,6 +74,8 @@ class BeerOClockCli::CLI
 
     def brewery_chosen(brewery_picked)
         puts ""
+        puts "Which brewery would you like details about?"
+        choice = user_input
         brewery = Brewery.find_by_name(brewery_picked)
         # variable is created to store the returned brewery, so I can show user something about it
         # pass in users selection from line 42, users input 
@@ -96,6 +98,7 @@ class BeerOClockCli::CLI
 
     def goodbye
         puts ""
+        puts "See you next time."
         puts "Cheers!"
         # needs "puts" bc returning only returns to machine, doesn't print
     end
