@@ -72,28 +72,40 @@ class BeerOClockCli::CLI
             # end
     end
 
-    def brewery_chosen(brewery_picked)
+    def brewery_chosen #(brewery_picked)
         puts ""
         puts "Which brewery would you like details about?"
         choice = user_input
-        Brewery.find_brewery(choice)
+        brewery = Brewery.find_brewery(choice)
         # variable is created to store the returned brewery, so I can show user something about it
         # pass in users selection from line 42, users input 
         # going to return an array, brewery
             # iterate over array with each to print out
-        brewery.each do |b|
-            puts "Name: #{b.name}"
-            puts "Brewery Type: #{b.brewery_type}"
-            puts "Street: #{b.street}"
-            puts "City: #{b.city}"
-            puts "State: #{b.state}"
-            puts "Postal Code: #{b.postal_code}"
-            puts "Country: #{b.country}"
-            puts "Phone: #{b.phone}"
-            puts "Website Url: #{b.website_url}"
-        end
+        # brewery.each do |b|
+        #     puts "Name: #{b.name}"
+        #     puts "Brewery Type: #{b.brewery_type}"
+        #     puts "Street: #{b.street}"
+        #     puts "City: #{b.city}"
+        #     puts "State: #{b.state}"
+        #     puts "Postal Code: #{b.postal_code}"
+        #     puts "Country: #{b.country}"
+        #     puts "Phone: #{b.phone}"
+        #     puts "Website Url: #{b.website_url}"
+        # end
         puts ""
         puts "If you would like to view your brewery options again, enter 'breweries'"
+    end
+
+    def brewery_details(brewery)
+        puts "Name: #{brewery.name}"
+        puts "Brewery Type: #{brewery.brewery_type}"
+        puts "Street: #{brewery.street}"
+        puts "City: #{brewery.city}"
+        puts "State: #{brewery.state}"
+        puts "Postal Code: #{brewery.postal_code}"
+        puts "Country: #{brewery.country}"
+        puts "Phone: #{brewery.phone}"
+        puts "Website Url: #{brewery.website_url}"
     end
 
     def goodbye

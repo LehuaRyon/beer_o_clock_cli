@@ -19,8 +19,8 @@ class Brewery
     # end
 
     #initializing using mass assignment
-    def initialize(attr_hash)
-        attr_hash.each do |key, value|
+    def initialize(brewery_hash)
+        brewery_hash.each do |key, value|
             # using send method to create whats above (instance variables, keys, values)
             # if key exits, lets create it
                 # bc the hash gives more attributes than I want to use in app
