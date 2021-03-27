@@ -92,8 +92,8 @@ class BeerOClockCli::CLI
         #     puts "Phone: #{b.phone}"
         #     puts "Website Url: #{b.website_url}"
         # end
-        puts ""
-        puts "If you would like to view your brewery options again, enter 'breweries'"
+        # puts ""
+        # puts "If you would like to view your brewery options again, enter 'breweries'"
     end
 
     def brewery_details(brewery)
@@ -106,6 +106,9 @@ class BeerOClockCli::CLI
         puts "Country: #{brewery.country}"
         puts "Phone: #{brewery.phone}"
         puts "Website Url: #{brewery.website_url}"
+        puts ""
+        puts "If you would like to view your brewery options again, enter 'breweries'"
+        menu
     end
 
     def goodbye
