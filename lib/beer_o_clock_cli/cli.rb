@@ -76,7 +76,7 @@ class BeerOClockCli::CLI
         puts ""
         puts "Which brewery would you like details about?"
         choice = user_input
-        brewery = Brewery.find_by_name(brewery_picked)
+        Brewery.find_brewery(choice)
         # variable is created to store the returned brewery, so I can show user something about it
         # pass in users selection from line 42, users input 
         # going to return an array, brewery
