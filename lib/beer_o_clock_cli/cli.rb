@@ -3,6 +3,11 @@ class CLI
     def run
         system("clear")
         start
+        menu
+        #while menu != 'exit'
+        #end
+        #goodbye
+        # if the instance methods do not return exit, keep going, if does, execute goodbye method to end program
     end
 
     def start
@@ -22,12 +27,12 @@ class CLI
         puts ""
         puts "We're happy to have you #{name}."
         puts ""
-        puts "To look at some location options for your next drink, enter 'breweries'."
-        puts "To leave the Beer Hub at any time, just enter 'exit'."
-        menu
+        #menu
     end
 
     def menu
+        puts "To look at some location options for your next drink, enter 'breweries'."
+        puts "To leave the Beer Hub at any time, just enter 'exit'."
         choice = user_input.downcase
         if  choice == "breweries"
             breweries_list
