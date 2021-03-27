@@ -51,7 +51,9 @@ class CLI
             # .each_with_index would start at 0, instead of the 1
             # creating incrementing numbered list, use index location of array
                 puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+                puts ""
                 puts "#{index}. #{brewery.name}"
+                puts ""
             end
             #puts "" # use empty strings to provide spaces
             # create 2nd layer of communication

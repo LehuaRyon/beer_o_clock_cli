@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# lets the user run the cli on any version of ruby they have on their computer
 
 # point of entry, the "door" to my app
 # shebang line above (need in any file using ruby code but not telling the file you're a ruby file .rb)
@@ -9,7 +10,6 @@
 require_relative '../lib/environment'
 
 # new session = starting a new instance of my CLI class & invoke start method in it
-#BeerOClockCli::CLI.new.start
 CLI.new.start
 # done session = close/delete that instance of my CLI
 
