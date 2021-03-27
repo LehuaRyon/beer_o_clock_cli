@@ -1,4 +1,4 @@
-class BeerOClockCli::CLI
+class CLI
     # only place of communication with user & data
     # welcoming user and giving option to exit
     def start
@@ -77,6 +77,7 @@ class BeerOClockCli::CLI
         puts "Which brewery would you like details about?"
         choice = user_input
         brewery = Brewery.find_brewery(choice)
+        brewery_details(brewery)
         # variable is created to store the returned brewery, so I can show user something about it
         # pass in users selection from line 42, users input 
         # going to return an array, brewery
@@ -97,6 +98,7 @@ class BeerOClockCli::CLI
     end
 
     def brewery_details(brewery)
+        puts ""
         puts "Name: #{brewery.name}"
         puts "Brewery Type: #{brewery.brewery_type}"
         puts "Street: #{brewery.street}"
@@ -113,7 +115,7 @@ class BeerOClockCli::CLI
 
     def goodbye
         puts ""
-        puts "See you next time."
+        puts "We hope to see you again soon."
         puts "Cheers!"
         # needs "puts" bc returning only returns to machine, doesn't print
     end
