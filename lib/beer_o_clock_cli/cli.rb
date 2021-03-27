@@ -11,8 +11,6 @@ class CLI
         # once new session of CLI is instantiated,
             # invoke & collect API data
             # then get it availiable for this app    
-        # menu
-        puts ""
     end
 
     def user_input
@@ -29,7 +27,6 @@ class CLI
     end
 
     def menu
-        # conditional statement
         # store a users input in variable
             # strip takes away anything before and after the entry
         choice = user_input.downcase
@@ -46,7 +43,6 @@ class CLI
         end
     end
 
-    #Brewery.all => # of breweries in array
     def breweries_list
         puts ""
         Brewery.all.each.with_index(1) do |brewery, index|
@@ -59,17 +55,8 @@ class CLI
             end
             #puts "" # use empty strings to provide spaces
             # create 2nd layer of communication
-            #puts "Which brewery would you like details about?"
-            #input = gets.strip.downcase
-            brewery_chosen#(input)
-            # if input == Brewery.find_by_name(input)
-            #     brewery_chosen(input)
-            # elsif input == exit
-            #     goodbye
-            # else
-            #     puts "Please enter the brewery name:"
-            #     breweries_list 
-            # end
+            brewery_chosen
+         
     end
 
     def brewery_chosen #(brewery_picked)
@@ -78,26 +65,10 @@ class CLI
         choice = user_input
         brewery = Brewery.find_brewery(choice)
         brewery_details(brewery)
-        # variable is created to store the returned brewery, so I can show user something about it
-        # pass in users selection from line 42, users input 
-        # going to return an array, brewery
-            # iterate over array with each to print out
-        # brewery.each do |b|
-        #     puts "Name: #{b.name}"
-        #     puts "Brewery Type: #{b.brewery_type}"
-        #     puts "Street: #{b.street}"
-        #     puts "City: #{b.city}"
-        #     puts "State: #{b.state}"
-        #     puts "Postal Code: #{b.postal_code}"
-        #     puts "Country: #{b.country}"
-        #     puts "Phone: #{b.phone}"
-        #     puts "Website Url: #{b.website_url}"
-        # end
-        # puts ""
-        # puts "If you would like to view your brewery options again, enter 'breweries'"
     end
 
     def brewery_details(brewery)
+        puts "_________________________________________________"
         puts ""
         puts "Name: #{brewery.name}"
         puts "Brewery Type: #{brewery.brewery_type}"
@@ -108,6 +79,7 @@ class CLI
         puts "Country: #{brewery.country}"
         puts "Phone: #{brewery.phone}"
         puts "Website Url: #{brewery.website_url}"
+        puts "_________________________________________________"
         puts ""
         puts "If you would like to view your brewery options again, enter 'breweries'"
         menu

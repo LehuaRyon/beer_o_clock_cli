@@ -44,10 +44,9 @@ class Brewery
     def self.find_brewery(brewery_name)
         # iterate over brewery array, #find to find brewery selected by name
         # find returns first instance match
-        # didn't use select bc it returns an array
         self.all.find do |brewery|
             brewery.name == brewery_name
-        # find the brewery with the name attribute that matches the breweery name passed into this method   
+        # find the brewery with the name attribute that matches the brewery name passed into this method   
         end
     end
 end
