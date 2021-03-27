@@ -1,5 +1,10 @@
 class CLI
    
+    def run
+        system("clear")
+        start
+    end
+
     def start
         puts ""
         puts "Hey mate! Welcome to the Beer Hub!"
