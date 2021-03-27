@@ -29,15 +29,16 @@ class BeerOClockCli::CLI
     end
 
     def menu
+        # conditional statement
         # store a users input in variable
             # strip takes away anything before and after the entry
-        input = user_input.downcase
+        choice = user_input.downcase
         # execute based off of input
         # conditional statement
-        if  input == "breweries"
+        if  choice == "breweries"
             breweries_list
             menu # this way doesn't kick out user after 1 input
-        elsif input == "exit"
+        elsif choice == "exit"
             goodbye
             # don't call #menu bc the point is user is exiting program 
         else
@@ -52,7 +53,7 @@ class BeerOClockCli::CLI
             # iterate over @@all array and access each brewery
                 # each brewery has attributes, so list by name attribute only
             # .each_with_index would start at 0, instead of the 1
-            # creating incrementing index list, use index location of array
+            # creating incrementing numbered list, use index location of array
                 puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
                 puts "#{index}. #{brewery.name}"
             end
