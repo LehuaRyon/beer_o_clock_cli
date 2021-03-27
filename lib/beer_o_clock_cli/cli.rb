@@ -1,16 +1,12 @@
 class CLI
-    # only place of communication with user & data
-    # welcoming user and giving option to exit
+   
     def start
         puts ""
         puts "Hey mate! Welcome to the Beer Hub!"
         puts "Are you trying to find the next spot to grab a brewski?"
         puts "If so, what's your name?"
         API.get_data
-        greet(user_input)
-        # once new session of CLI is instantiated,
-            # invoke & collect API data
-            # then get it availiable for this app    
+        greet(user_input)  
     end
 
     def user_input
@@ -27,17 +23,12 @@ class CLI
     end
 
     def menu
-        # store a users input in variable
-            # strip takes away anything before and after the entry
         choice = user_input.downcase
-        # execute based off of input
-        # conditional statement
         if  choice == "breweries"
             breweries_list
-            menu # this way doesn't kick out user after 1 input
+            menu
         elsif choice == "exit"
             goodbye
-            # don't call #menu bc the point is user is exiting program 
         else
             invalid_entry
         end
@@ -46,19 +37,12 @@ class CLI
     def breweries_list
         puts ""
         Brewery.all.each.with_index(1) do |brewery, index|
-            # iterate over @@all array and access each brewery
-                # each brewery has attributes, so list by name attribute only
-            # .each_with_index would start at 0, instead of the 1
-            # creating incrementing numbered list, use index location of array
                 puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
                 puts ""
                 puts "#{index}. #{brewery.name}"
                 puts ""
             end
-            #puts "" # use empty strings to provide spaces
-            # create 2nd layer of communication
             brewery_chosen
-         
     end
 
     def brewery_chosen
@@ -91,7 +75,6 @@ class CLI
         puts ""
         puts "We hope to see you again soon."
         puts "Cheers!"
-        # needs "puts" bc returning only returns to machine, doesn't print
     end
 
     def invalid_entry
@@ -100,6 +83,5 @@ class CLI
         puts "Enter 'breweries' to see a list of breweries."
         puts "Enter 'exit' to leave the Beer Hub."
         menu
-        # recursion = when you call the method inside of itself
     end
 end

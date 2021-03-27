@@ -1,16 +1,5 @@
 #!/usr/bin/env ruby
-# lets the user run the cli on any version of ruby they have on their computer
-
-# point of entry, the "door" to my app
-# shebang line above (need in any file using ruby code but not telling the file you're a ruby file .rb)
-    # tells environment its not a ruby file,
-    # but going to be using ruby code,
-    # so load into my environment
 
 require_relative '../lib/environment.rb'
 
-# new session = starting a new instance of my CLI class & invoke start method in it
 CLI.new.start
-# done session = close/delete that instance of my CLI
-
-# runn app also can use file name "ruby bin/run"
