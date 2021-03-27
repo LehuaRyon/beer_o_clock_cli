@@ -7,7 +7,7 @@
     # but going to be using ruby code,
     # so load into my environment
 
-require_relative '../lib/environment'
+require_relative '../lib/environment.rb'
 
 # new session = starting a new instance of my CLI class & invoke start method in it
 CLI.new.start

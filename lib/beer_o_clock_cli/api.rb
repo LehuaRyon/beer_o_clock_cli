@@ -6,7 +6,8 @@ class API
         # call out API endpoint to collect all breweries, submit request to get data
         response = RestClient.get("https://api.openbrewerydb.org/breweries")
         #binding.pry
-        # use JSON. parse response's string body (things over the internet communicate in strings, not hashes & arrays) and return value of results key as array
+        # use JSON. parse response's string body (things over the internet communicate in strings, not hashes & arrays) 
+        # and return value of results key as array
         breweries_array = JSON.parse(response.body)
         # instantiate a new brewery object with each brewery from array
         breweries_array.each do |brewery|
@@ -15,5 +16,4 @@ class API
             # above, brewery = hash of attributes, when i iterate over breweries_array
         end
     end
-
 end

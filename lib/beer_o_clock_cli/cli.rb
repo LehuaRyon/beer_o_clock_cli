@@ -61,7 +61,7 @@ class CLI
          
     end
 
-    def brewery_chosen #(brewery_picked)
+    def brewery_chosen
         puts ""
         puts "Which brewery would you like details about?"
         choice = user_input
