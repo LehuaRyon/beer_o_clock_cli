@@ -4,10 +4,8 @@ class Brewery
 
     @@all = []
 
-    def initialize(brewery_hash)
-        brewery_hash.each do |key, value|
-            self.send("#{key}=", value) if self.respond_to?("#{key}=")
-        end
+    def initialize(attributes_hash)
+        attributes_hash.each {|key, value| self.send("#{key}=", value) if self.respond_to?("#{key}=")}
         save
     end
 

@@ -27,12 +27,12 @@ class CLI
         puts ""
         puts "We're happy to have you #{name}."
         puts ""
+        puts "To look at some location options for your next drink, enter 'breweries'."
+        puts "To leave the Beer Hub at any time, just enter 'exit'."
         #menu
     end
 
     def menu
-        puts "To look at some location options for your next drink, enter 'breweries'."
-        puts "To leave the Beer Hub at any time, just enter 'exit'."
         choice = user_input.downcase
         if  choice == "breweries"
             breweries_list
@@ -78,7 +78,7 @@ class CLI
         puts "_________________________________________________"
         puts ""
         puts "If you would like to view your brewery options again, enter 'breweries'"
-        menu
+        #menu
     end
 
     def goodbye
