@@ -13,7 +13,7 @@ class CLI
 
     def start
         puts ""
-        puts Rainbow("Hey mate! Welcome to the Beer Hub!").goldenrod.bright
+        puts Rainbow("Hey mate! Welcome to the Beer Hub! 🍺").goldenrod.bright
         puts ""
         puts Rainbow("Are you trying to find the next spot to grab a brewski?").palegoldenrod
         puts Rainbow("If so, what's your name?").palegoldenrod
@@ -83,12 +83,12 @@ class CLI
             puts Rainbow("Website Url: #{brewery.website_url}").sienna
             puts Rainbow("_________________________________________________").saddlebrown
             puts ""
-            puts Rainbow("If you would like to view your brewery options again, enter 'breweries'").palegoldenrod
+            puts Rainbow("If you would like to view your brewery options again, enter 'breweries' ").palegoldenrod
         elsif brewery == "exit"
             goodbye
         else
             puts ""
-            puts Rainbow("Invalid entry, try again.").darkgoldenrod
+            puts Rainbow("❕ Invalid entry, try again. ❕").darkgoldenrod
             brewery_chosen
         end
     end
@@ -97,12 +97,12 @@ class CLI
         sleep(0.5)
         puts ""
         puts Rainbow("We hope to see you again soon.").goldenrod.bright
-        puts Rainbow("Cheers!").goldenrod.bright
+        puts Rainbow("       🍻 Cheers! 🍻").goldenrod.bright
     end
 
     def invalid_entry
         puts ""
-        puts Rainbow("Invalid entry, try again.").darkgoldenrod
+        puts Rainbow("❕ Invalid entry, try again. ❕").darkgoldenrod
         puts ""
         puts Rainbow("Enter 'breweries' to see a list of breweries.").palegoldenrod
         puts Rainbow("Enter 'exit' to leave the Beer Hub.").palegoldenrod
