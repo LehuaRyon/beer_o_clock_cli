@@ -1,11 +1,11 @@
 class CLI
    
     def run
-        system("clear")
+        system "clear"
         start
         menu
-        #while menu != 'exit'
-        #end
+        # while menu != 'exit'
+        # end
         #goodbye
         # if the instance methods do not return exit, keep going, if does, execute goodbye method to end program
     end
@@ -16,7 +16,7 @@ class CLI
         puts "Are you trying to find the next spot to grab a brewski?"
         puts "If so, what's your name?"
         API.get_data
-        greet(user_input)  
+        greet(user_input) 
     end
 
     def user_input
@@ -24,12 +24,12 @@ class CLI
     end
 
     def greet(name)
+        sleep(0.5)
         puts ""
         puts "We're happy to have you #{name}."
         puts ""
         puts "To look at some location options for your next drink, enter 'breweries'."
         puts "To leave the Beer Hub at any time, just enter 'exit'."
-        #menu
     end
 
     def menu
@@ -45,6 +45,7 @@ class CLI
     end
 
     def breweries_list
+        sleep(1)
         puts ""
         Brewery.all.each.with_index(1) do |brewery, index|
                 puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
@@ -56,6 +57,7 @@ class CLI
     end
 
     def brewery_chosen
+        sleep(1)
         puts ""
         puts "Which brewery would you like details about?"
         choice = user_input
@@ -64,6 +66,7 @@ class CLI
     end
 
     def brewery_details(brewery)
+        sleep(1)
         puts "_________________________________________________"
         puts ""
         puts "Name: #{brewery.name}"
@@ -82,6 +85,7 @@ class CLI
     end
 
     def goodbye
+        sleep(0.5)
         puts ""
         puts "We hope to see you again soon."
         puts "Cheers!"
@@ -92,6 +96,7 @@ class CLI
         puts "Invalid entry, try again."
         puts "Enter 'breweries' to see a list of breweries."
         puts "Enter 'exit' to leave the Beer Hub."
+        sleep(3)
         menu
     end
 end
