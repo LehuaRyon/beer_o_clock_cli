@@ -16,5 +16,5 @@ gem "json"
 
 gem "require_all"
 
-# gem "colorize"
+gem "rainbow"
 

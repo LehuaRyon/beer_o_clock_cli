@@ -19,7 +19,7 @@ class Brewery
 
     def self.find_brewery(brewery_name)
         self.all.find do |brewery|
-            brewery.name == brewery_name  
+            brewery.name.downcase == brewery_name  
         end
     end
 end

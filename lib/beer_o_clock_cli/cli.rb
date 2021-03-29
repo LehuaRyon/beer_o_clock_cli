@@ -12,9 +12,10 @@ class CLI
 
     def start
         puts ""
-        puts "Hey mate! Welcome to the Beer Hub!"
-        puts "Are you trying to find the next spot to grab a brewski?"
-        puts "If so, what's your name?"
+        puts Rainbow("Hey mate! Welcome to the Beer Hub!").goldenrod.bright
+        puts ""
+        puts Rainbow("Are you trying to find the next spot to grab a brewski?").palegoldenrod
+        puts Rainbow("If so, what's your name?").palegoldenrod
         API.get_data
         greet(user_input) 
     end
@@ -26,10 +27,10 @@ class CLI
     def greet(name)
         sleep(0.5)
         puts ""
-        puts "We're happy to have you #{name}."
+        puts Rainbow("We're happy to have you #{name}.").darkgoldenrod
         puts ""
-        puts "To look at some location options for your next drink, enter 'breweries'."
-        puts "To leave the Beer Hub at any time, just enter 'exit'."
+        puts Rainbow("To look at some location options for your next drink, enter 'breweries'.").palegoldenrod
+        puts Rainbow("To leave the Beer Hub at any time, just enter 'exit'.").palegoldenrod
     end
 
     def menu
@@ -48,9 +49,9 @@ class CLI
         sleep(1)
         puts ""
         Brewery.all.each.with_index(1) do |brewery, index|
-                puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+                puts Rainbow("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~").saddlebrown
                 puts ""
-                puts "#{index}. #{brewery.name}"
+                puts Rainbow("#{index}. #{brewery.name}").gold
                 puts ""
             end
             brewery_chosen
@@ -59,7 +60,7 @@ class CLI
     def brewery_chosen
         sleep(1)
         puts ""
-        puts "Which brewery would you like details about?"
+        puts Rainbow("Which brewery would you like details about?").palegoldenrod
         choice = user_input
         brewery = Brewery.find_brewery(choice)
         brewery_details(brewery)
@@ -67,35 +68,34 @@ class CLI
 
     def brewery_details(brewery)
         sleep(1)
-        puts "_________________________________________________"
+        puts Rainbow("_________________________________________________").saddlebrown
         puts ""
-        puts "Name: #{brewery.name}"
-        puts "Brewery Type: #{brewery.brewery_type}"
-        puts "Street: #{brewery.street}"
-        puts "City: #{brewery.city}"
-        puts "State: #{brewery.state}"
-        puts "Postal Code: #{brewery.postal_code}"
-        puts "Country: #{brewery.country}"
-        puts "Phone: #{brewery.phone}"
-        puts "Website Url: #{brewery.website_url}"
-        puts "_________________________________________________"
+        puts Rainbow("Name: #{brewery.name}").lightgoldenrod.bright
+        puts Rainbow("Brewery Type: #{brewery.brewery_type}").yellow
+        puts Rainbow("Street: #{brewery.street}").gold
+        puts Rainbow("City: #{brewery.city}").goldenrod
+        puts Rainbow("State: #{brewery.state}").khaki
+        puts Rainbow("Postal Code: #{brewery.postal_code}").darkkhaki
+        puts Rainbow("Country: #{brewery.country}").peru
+        puts Rainbow("Phone: #{brewery.phone}").darkgoldenrod
+        puts Rainbow("Website Url: #{brewery.website_url}").sienna
+        puts Rainbow("_________________________________________________").saddlebrown
         puts ""
-        puts "If you would like to view your brewery options again, enter 'breweries'"
-        #menu
+        puts Rainbow("If you would like to view your brewery options again, enter 'breweries'").palegoldenrod
     end
 
     def goodbye
         sleep(0.5)
         puts ""
-        puts "We hope to see you again soon."
-        puts "Cheers!"
+        puts Rainbow("We hope to see you again soon.").goldenrod.bright
+        puts Rainbow("Cheers!").goldenrod.bright
     end
 
     def invalid_entry
         puts ""
-        puts "Invalid entry, try again."
-        puts "Enter 'breweries' to see a list of breweries."
-        puts "Enter 'exit' to leave the Beer Hub."
+        puts Rainbow("Invalid entry, try again.").darkgoldenrod
+        puts Rainbow("Enter 'breweries' to see a list of breweries.").palegoldenrod
+        puts Rainbow("Enter 'exit' to leave the Beer Hub.").palegoldenrod
         sleep(3)
         menu
     end
