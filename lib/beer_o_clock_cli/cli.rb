@@ -83,7 +83,7 @@ class CLI
             puts Rainbow("_________________________________________________").saddlebrown
             puts ""
             puts Rainbow("If you would like to view your brewery options again, enter 'breweries'").palegoldenrod
-        elsif "exit"
+        elsif brewery == "exit"
             goodbye
         else
             puts ""
