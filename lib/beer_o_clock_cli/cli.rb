@@ -71,7 +71,8 @@ class CLI
         if  brewery
             puts Rainbow("_________________________________________________").saddlebrown
             puts ""
-            puts Rainbow("Name: #{brewery.name}").lightgoldenrod.bright
+            puts Rainbow("Name: #{brewery.name}").lightgoldenrod.bright.underline
+            puts ""
             puts Rainbow("Brewery Type: #{brewery.brewery_type}").gold
             puts Rainbow("Street: #{brewery.street}").yellow
             puts Rainbow("City: #{brewery.city}").goldenrod
