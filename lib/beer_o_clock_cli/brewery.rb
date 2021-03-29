@@ -18,8 +18,8 @@ class Brewery
     end
 
     def self.find_brewery(brewery_name)
-        self.all.find do |brewery|
-            brewery.name.downcase == brewery_name  
-        end
+        self.all.find {|brewery| brewery.name.downcase == brewery_name} 
     end
+  
+    #find brewery by index?
 end

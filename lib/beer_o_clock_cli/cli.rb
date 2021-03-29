@@ -3,11 +3,16 @@ class CLI
     def run
         system "clear"
         start
+        greet(user_input)
         menu
-        # while menu != 'exit'
-        # end
+        #while greet(user_input) != 'exit'
+       # end
         #goodbye
         # if the instance methods do not return exit, keep going, if does, execute goodbye method to end program
+    end
+
+    def user_input
+        gets.strip
     end
 
     def start
@@ -17,20 +22,25 @@ class CLI
         puts Rainbow("Are you trying to find the next spot to grab a brewski?").palegoldenrod
         puts Rainbow("If so, what's your name?").palegoldenrod
         API.get_data
-        greet(user_input) 
-    end
-
-    def user_input
-        gets.strip
+        #greet(user_input)
     end
 
     def greet(name)
         sleep(0.5)
-        puts ""
-        puts Rainbow("We're happy to have you #{name}.").darkgoldenrod
-        puts ""
-        puts Rainbow("To look at some location options for your next drink, enter 'breweries'.").palegoldenrod
-        puts Rainbow("To leave the Beer Hub at any time, just enter 'exit'.").palegoldenrod
+        # puts ""
+        # puts Rainbow("We're happy to have you #{name}.").darkgoldenrod
+        # puts ""
+        # puts Rainbow("To look at some location options for your next drink, enter 'breweries'.").palegoldenrod
+        # puts Rainbow("To leave the Beer Hub at any time, just enter 'exit'.").palegoldenrod
+        if name == "exit"
+            goodbye
+        else
+            puts ""
+            puts Rainbow("We're happy to have you #{name}.").darkgoldenrod
+            puts ""
+            puts Rainbow("To look at some location options for your next drink, enter 'breweries'.").palegoldenrod
+            puts Rainbow("To leave the Beer Hub at any time, just enter 'exit'.").palegoldenrod
+        end
     end
 
     def menu
@@ -58,9 +68,9 @@ class CLI
     end
 
     def brewery_chosen
-        sleep(1)
+        sleep(0.5)
         puts ""
-        puts Rainbow("Which brewery would you like details about?").palegoldenrod
+        puts Rainbow("Which brewery would you like details about? Please type its name:").palegoldenrod
         choice = user_input
         brewery = Brewery.find_brewery(choice)
         brewery_details(brewery)
@@ -68,20 +78,28 @@ class CLI
 
     def brewery_details(brewery)
         sleep(1)
-        puts Rainbow("_________________________________________________").saddlebrown
-        puts ""
-        puts Rainbow("Name: #{brewery.name}").lightgoldenrod.bright
-        puts Rainbow("Brewery Type: #{brewery.brewery_type}").yellow
-        puts Rainbow("Street: #{brewery.street}").gold
-        puts Rainbow("City: #{brewery.city}").goldenrod
-        puts Rainbow("State: #{brewery.state}").khaki
-        puts Rainbow("Postal Code: #{brewery.postal_code}").darkkhaki
-        puts Rainbow("Country: #{brewery.country}").peru
-        puts Rainbow("Phone: #{brewery.phone}").darkgoldenrod
-        puts Rainbow("Website Url: #{brewery.website_url}").sienna
-        puts Rainbow("_________________________________________________").saddlebrown
-        puts ""
-        puts Rainbow("If you would like to view your brewery options again, enter 'breweries'").palegoldenrod
+        if  brewery
+            puts Rainbow("_________________________________________________").saddlebrown
+            puts ""
+            puts Rainbow("Name: #{brewery.name}").lightgoldenrod.bright
+            puts Rainbow("Brewery Type: #{brewery.brewery_type}").gold
+            puts Rainbow("Street: #{brewery.street}").yellow
+            puts Rainbow("City: #{brewery.city}").goldenrod
+            puts Rainbow("State: #{brewery.state}").khaki
+            puts Rainbow("Postal Code: #{brewery.postal_code}").darkkhaki
+            puts Rainbow("Country: #{brewery.country}").peru
+            puts Rainbow("Phone: #{brewery.phone}").darkgoldenrod
+            puts Rainbow("Website Url: #{brewery.website_url}").sienna
+            puts Rainbow("_________________________________________________").saddlebrown
+            puts ""
+            puts Rainbow("If you would like to view your brewery options again, enter 'breweries'").palegoldenrod
+        elsif brewery == "exit"
+            goodbye
+        else
+            puts ""
+            puts Rainbow("Invalid entry, try again.").darkgoldenrod
+            brewery_chosen
+        end
     end
 
     def goodbye
@@ -94,6 +112,7 @@ class CLI
     def invalid_entry
         puts ""
         puts Rainbow("Invalid entry, try again.").darkgoldenrod
+        puts ""
         puts Rainbow("Enter 'breweries' to see a list of breweries.").palegoldenrod
         puts Rainbow("Enter 'exit' to leave the Beer Hub.").palegoldenrod
         sleep(3)
