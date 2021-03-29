@@ -5,10 +5,6 @@ class CLI
         start
         greet(user_input)
         menu
-        #while greet(user_input) != 'exit'
-       # end
-        #goodbye
-        # if the instance methods do not return exit, keep going, if does, execute goodbye method to end program
     end
 
     def user_input
@@ -22,16 +18,10 @@ class CLI
         puts Rainbow("Are you trying to find the next spot to grab a brewski?").palegoldenrod
         puts Rainbow("If so, what's your name?").palegoldenrod
         API.get_data
-        #greet(user_input)
     end
 
     def greet(name)
         sleep(0.5)
-        # puts ""
-        # puts Rainbow("We're happy to have you #{name}.").darkgoldenrod
-        # puts ""
-        # puts Rainbow("To look at some location options for your next drink, enter 'breweries'.").palegoldenrod
-        # puts Rainbow("To leave the Beer Hub at any time, just enter 'exit'.").palegoldenrod
         if name == "exit"
             goodbye
         else
@@ -61,7 +51,7 @@ class CLI
         Brewery.all.each.with_index(1) do |brewery, index|
                 puts Rainbow("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~").saddlebrown
                 puts ""
-                puts Rainbow("#{index}. #{brewery.name}").gold
+                puts Rainbow("#{index}. #{brewery.name}, #{brewery.state}").gold
                 puts ""
             end
             brewery_chosen
@@ -93,7 +83,7 @@ class CLI
             puts Rainbow("_________________________________________________").saddlebrown
             puts ""
             puts Rainbow("If you would like to view your brewery options again, enter 'breweries'").palegoldenrod
-        elsif brewery == "exit"
+        elsif "exit"
             goodbye
         else
             puts ""
