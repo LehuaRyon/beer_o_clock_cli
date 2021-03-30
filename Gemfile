@@ -18,3 +18,5 @@ gem "require_all"
 
 gem "rainbow"
 
+gem "tty-prompt"
+

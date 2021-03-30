@@ -2,6 +2,7 @@ class CLI
    
     def run
         system "clear"
+        # @prompt = TTY::Prompt.new
         start
         greet(user_input)
     end

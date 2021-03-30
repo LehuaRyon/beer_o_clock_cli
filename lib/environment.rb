@@ -1,3 +1,6 @@
+# require 'bundler'
+# Bundler.require
+
 require_relative "./beer_o_clock_cli/api.rb"
 require_relative "./beer_o_clock_cli/cli.rb"
 require_relative "./beer_o_clock_cli/brewery.rb"
