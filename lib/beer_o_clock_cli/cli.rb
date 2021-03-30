@@ -4,7 +4,6 @@ class CLI
         system "clear"
         start
         greet(user_input)
-        menu
     end
 
     def user_input
@@ -12,6 +11,7 @@ class CLI
     end
 
     def start
+        # Brewery.intro_logo
         puts ""
         puts Rainbow("Hey mate! Welcome to the Beer Hub! 🍺").goldenrod.bright
         puts ""
@@ -28,14 +28,15 @@ class CLI
             puts ""
             puts Rainbow("We're happy to have you #{name}.").darkgoldenrod
             puts ""
-            puts Rainbow("To look at some location options for your next drink, enter 'breweries'.").palegoldenrod
+            puts Rainbow("To look at some location options for your next drink, enter 'list'.").palegoldenrod
             puts Rainbow("To leave the Beer Hub at any time, just enter 'exit'.").palegoldenrod
+            menu
         end
     end
 
     def menu
         choice = user_input.downcase
-        if  choice == "breweries"
+        if  choice == "list"
             breweries_list
             menu
         elsif choice == "exit"
@@ -49,7 +50,7 @@ class CLI
         sleep(1)
         puts ""
         Brewery.all.each.with_index(1) do |brewery, index|
-                puts Rainbow("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~").saddlebrown
+                puts Rainbow("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~").saddlebrown
                 puts ""
                 puts Rainbow("#{index}. #{brewery.name}, #{brewery.state}").gold
                 puts ""
@@ -63,13 +64,13 @@ class CLI
         puts Rainbow("Which brewery would you like details about? Please type its name:").palegoldenrod
         choice = user_input
         brewery = Brewery.find_brewery(choice)
-        brewery_details(brewery)
+        brewery_details(brewery)  
     end
 
     def brewery_details(brewery)
         sleep(1)
         if  brewery
-            puts Rainbow("_________________________________________________").saddlebrown
+            puts Rainbow("____________________________________________________________").saddlebrown
             puts ""
             puts Rainbow("Name: #{brewery.name}").lightgoldenrod.bright.underline
             puts ""
@@ -83,7 +84,7 @@ class CLI
             puts Rainbow("Website Url: #{brewery.website_url}").sienna
             puts Rainbow("_________________________________________________").saddlebrown
             puts ""
-            puts Rainbow("If you would like to view your brewery options again, enter 'breweries' ").palegoldenrod
+            puts Rainbow("If you would like to view your brewery options again, enter 'list'.").palegoldenrod
         elsif brewery == "exit"
             goodbye
         else
@@ -104,9 +105,10 @@ class CLI
         puts ""
         puts Rainbow("❕ Invalid entry, try again. ❕").darkgoldenrod
         puts ""
-        puts Rainbow("Enter 'breweries' to see a list of breweries.").palegoldenrod
+        puts Rainbow("Enter 'list' to see a list of breweries.").palegoldenrod
         puts Rainbow("Enter 'exit' to leave the Beer Hub.").palegoldenrod
         sleep(3)
         menu
     end
+
 end
