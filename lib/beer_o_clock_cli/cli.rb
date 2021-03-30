@@ -1,8 +1,11 @@
 class CLI
    
+    # def initialize
+    #     @prompt = TTY::Prompt.new
+    # end
+
     def run
         system "clear"
-        # @prompt = TTY::Prompt.new
         start
         greet(user_input)
     end
@@ -39,12 +42,21 @@ class CLI
         choice = user_input.downcase
         if  choice == "list"
             breweries_list
-            menu
         elsif choice == "exit"
             goodbye
         else
             invalid_entry
         end
+        # input = @prompt.enum_select("What would you lke to do?", ["See a List of Breweries", "Exit"])
+        # puts input
+        # case input
+        # when "What would you lke to do?"
+        #     breweries_list
+        # when "Exit"
+        #     goodbye
+        # else
+        #   invalid_entry
+        # end
     end
 
     def breweries_list
@@ -64,13 +76,20 @@ class CLI
         puts ""
         puts Rainbow("Which brewery would you like details about? Please type its name:").palegoldenrod
         choice = user_input
-        brewery = Brewery.find_brewery(choice)
+        if Brewery.find_brewery(choice)
+            brewery = Brewery.find_brewery(choice)
+        else
+            brewery = choice
+        end    
         brewery_details(brewery)  
     end
 
     def brewery_details(brewery)
         sleep(1)
-        if  brewery
+        # binding.pry
+        if brewery == "exit"
+            goodbye
+        elsif  brewery.class == Brewery
             puts Rainbow("____________________________________________________________").saddlebrown
             puts ""
             puts Rainbow("Name: #{brewery.name}").lightgoldenrod.bright.underline
@@ -86,8 +105,7 @@ class CLI
             puts Rainbow("_________________________________________________").saddlebrown
             puts ""
             puts Rainbow("If you would like to view your brewery options again, enter 'list'.").palegoldenrod
-        elsif brewery == "exit"
-            goodbye
+            menu
         else
             puts ""
             puts Rainbow("❕ Invalid entry, try again. ❕").darkgoldenrod
