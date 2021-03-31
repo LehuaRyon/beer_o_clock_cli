@@ -22,7 +22,8 @@ class Brewery
     end
   
     # def self.intro_logo
-    #     puts "                      ___                                  
+    #     puts " 
+    #                                 ___                                  
     #                              .'     '.                               
     #                             /         \          oOoOo               
     #                            |           |      ,==|||||               

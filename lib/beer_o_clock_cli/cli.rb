@@ -1,8 +1,8 @@
 class CLI
    
-    # def initialize
-    #     @prompt = TTY::Prompt.new
-    # end
+    def initialize
+        @prompt = TTY::Prompt.new
+    end
 
     def run
         system "clear"
@@ -15,7 +15,7 @@ class CLI
     end
 
     def start
-        # Brewery.intro_logo
+        #Brewery.intro_logo
         puts ""
         puts Rainbow("Hey mate! Welcome to the Beer Hub! 🍺").goldenrod.bright
         puts ""
@@ -39,24 +39,21 @@ class CLI
     end
 
     def menu
-        choice = user_input.downcase
-        if  choice == "list"
-            breweries_list
-        elsif choice == "exit"
-            goodbye
-        else
-            invalid_entry
-        end
-        # input = @prompt.enum_select("What would you lke to do?", ["See a List of Breweries", "Exit"])
-        # puts input
-        # case input
-        # when "What would you lke to do?"
+        # choice = user_input.downcase
+        # if  choice == "list"
         #     breweries_list
-        # when "Exit"
+        # elsif choice == "exit"
         #     goodbye
         # else
-        #   invalid_entry
+        #     invalid_entry
         # end
+        input = @prompt.enum_select("What would you lke to do?", ["See a List of Breweries", "Exit"])
+        case input
+        when "See a List of Breweries"
+            breweries_list
+        when "Exit"
+            goodbye
+        end
     end
 
     def breweries_list
@@ -68,7 +65,7 @@ class CLI
                 puts Rainbow("#{index}. #{brewery.name}, #{brewery.state}").gold
                 puts ""
             end
-            brewery_chosen
+        brewery_chosen
     end
 
     def brewery_chosen
@@ -86,10 +83,9 @@ class CLI
 
     def brewery_details(brewery)
         sleep(1)
-        # binding.pry
         if brewery == "exit"
             goodbye
-        elsif  brewery.class == Brewery
+        elsif  brewery.class == Brewery # if brewery object.class = brewwery
             puts Rainbow("____________________________________________________________").saddlebrown
             puts ""
             puts Rainbow("Name: #{brewery.name}").lightgoldenrod.bright.underline
@@ -126,6 +122,7 @@ class CLI
         puts ""
         puts Rainbow("Enter 'list' to see a list of breweries.").palegoldenrod
         puts Rainbow("Enter 'exit' to leave the Beer Hub.").palegoldenrod
+        puts ""
         sleep(3)
         menu
     end
