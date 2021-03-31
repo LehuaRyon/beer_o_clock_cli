@@ -39,8 +39,9 @@ class CLI
     end
 
     def menu
-        input = @prompt.enum_select("What would you lke to do?", ["See a List of Breweries", "Exit"])
-        if input == "See a List of Breweries"
+        puts ""
+        input = @prompt.enum_select(Rainbow("What would you lke to do?").darkgoldenrod, [Rainbow("See a List of Breweries").palegoldenrod, Rainbow("Exit").palegoldenrod])
+        if input == Rainbow("See a List of Breweries").palegoldenrod
             breweries_list
         else 
             goodbye
@@ -91,7 +92,8 @@ class CLI
             puts Rainbow("Website Url: #{brewery.website_url}").sienna
             puts Rainbow("_________________________________________________").saddlebrown
             puts ""
-            puts Rainbow("If you would like to view your brewery options again, enter 'list'.").palegoldenrod
+            puts Rainbow("If you would like to view your brewery options again, enter '1'.").palegoldenrod
+            puts Rainbow("If you would like to leave the Beer Hub, enter '2'.").palegoldenrod)
             menu
         else
             puts ""
