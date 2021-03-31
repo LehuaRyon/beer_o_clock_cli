@@ -20,7 +20,7 @@ class CLI
         puts Rainbow("Hey mate! Welcome to the Beer Hub! 🍺").goldenrod.bright
         puts ""
         puts Rainbow("Are you trying to find the next spot to grab a brewski?").palegoldenrod
-        puts Rainbow("If so, what's your name?").palegoldenrod
+        puts Rainbow("If so, what's your name? If not, enter 'exit'.").palegoldenrod
         API.get_data
     end
 
@@ -32,8 +32,8 @@ class CLI
             puts ""
             puts Rainbow("We're happy to have you #{name}.").darkgoldenrod
             puts ""
-            puts Rainbow("To look at some location options for your next drink, enter 'list'.").palegoldenrod
-            puts Rainbow("To leave the Beer Hub at any time, just enter 'exit'.").palegoldenrod
+            puts Rainbow("To look at some location options for your next drink, enter '1'.").palegoldenrod
+            puts Rainbow("To leave the Beer Hub, enter '2'.").palegoldenrod
             menu
         end
     end
@@ -80,20 +80,20 @@ class CLI
         elsif  brewery.class == Brewery # if brewery object.class = brewwery
             puts Rainbow("____________________________________________________________").saddlebrown
             puts ""
-            puts Rainbow("Name: #{brewery.name}").lightgoldenrod.bright.underline
-            puts ""
+            puts Rainbow("Name:         #{brewery.name}").lightgoldenrod.bright
+            #puts ""
             puts Rainbow("Brewery Type: #{brewery.brewery_type}").gold
-            puts Rainbow("Street: #{brewery.street}").yellow
-            puts Rainbow("City: #{brewery.city}").goldenrod
-            puts Rainbow("State: #{brewery.state}").khaki
-            puts Rainbow("Postal Code: #{brewery.postal_code}").darkkhaki
-            puts Rainbow("Country: #{brewery.country}").peru
-            puts Rainbow("Phone: #{brewery.phone}").darkgoldenrod
-            puts Rainbow("Website Url: #{brewery.website_url}").sienna
+            puts Rainbow("Street:       #{brewery.street}").yellow
+            puts Rainbow("City:         #{brewery.city}").goldenrod
+            puts Rainbow("State:        #{brewery.state}").khaki
+            puts Rainbow("Postal Code:  #{brewery.postal_code}").darkkhaki
+            puts Rainbow("Country:      #{brewery.country}").peru
+            puts Rainbow("Phone:        #{brewery.phone}").darkgoldenrod
+            puts Rainbow("Website Url:  #{brewery.website_url}").sienna
             puts Rainbow("_________________________________________________").saddlebrown
             puts ""
             puts Rainbow("If you would like to view your brewery options again, enter '1'.").palegoldenrod
-            puts Rainbow("If you would like to leave the Beer Hub, enter '2'.").palegoldenrod)
+            puts Rainbow("If you would like to leave the Beer Hub, enter '2'.").palegoldenrod
             menu
         else
             puts ""
