@@ -39,19 +39,10 @@ class CLI
     end
 
     def menu
-        # choice = user_input.downcase
-        # if  choice == "list"
-        #     breweries_list
-        # elsif choice == "exit"
-        #     goodbye
-        # else
-        #     invalid_entry
-        # end
         input = @prompt.enum_select("What would you lke to do?", ["See a List of Breweries", "Exit"])
-        case input
-        when "See a List of Breweries"
+        if input == "See a List of Breweries"
             breweries_list
-        when "Exit"
+        else 
             goodbye
         end
     end
@@ -114,6 +105,7 @@ class CLI
         puts ""
         puts Rainbow("We hope to see you again soon.").goldenrod.bright
         puts Rainbow("       🍻 Cheers! 🍻").goldenrod.bright
+        puts ""
     end
 
     def invalid_entry
