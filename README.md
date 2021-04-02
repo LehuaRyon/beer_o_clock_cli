@@ -1,8 +1,6 @@
 # BeerOClockCli
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/beer_o_clock_cli`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to the Beer O'Clock Gem! This gem was developed for the Phase 1 CLI Project of the Online Part-Time Software Engineering course at Flatiron School.  I developed this gem to let users sift through a list of various breweries in the United States, using information from an API, and pick one or more breweries of their liking to find out more details about them. 
 
 ## Installation
 
@@ -20,9 +18,13 @@ Or install it yourself as:
 
     $ gem install beer_o_clock_cli
 
+To run the CLI:
+    
+    $ ruby bin/run
+
 ## Usage
 
-TODO: Write usage instructions here
+Once you execute the bin file './bin/run', you will be prompted to enter your name or exit the application. Once you enter your name, you can enter the corresponding number to list locations of various breweries in the United States or exit.  If you choose to see a list a breweries, you can type in the brewery name to bring up details about that specific brewery.  After viewing those details, you have the option to see the brewery list again in order to view another brewery's details or exit using the same corresponding numbers from before.
 
 ## Development
 

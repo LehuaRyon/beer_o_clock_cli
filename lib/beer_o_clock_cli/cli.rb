@@ -63,7 +63,8 @@ class CLI
     def brewery_chosen
         sleep(0.5)
         puts ""
-        puts Rainbow("Which brewery would you like details about? Please type its name:").palegoldenrod
+        puts Rainbow("Which brewery would you like details about? Please enter its name:").palegoldenrod
+        puts Rainbow("If you would like to leave the Beer Hub, enter 'exit'.").palegoldenrod
         choice = user_input
         if Brewery.find_brewery(choice)
             brewery = Brewery.find_brewery(choice)
@@ -78,10 +79,9 @@ class CLI
         if brewery == "exit"
             goodbye
         elsif  brewery.class == Brewery # if brewery object.class = brewwery
-            puts Rainbow("____________________________________________________________").saddlebrown
+            puts Rainbow("_______________________________________________________________").saddlebrown
             puts ""
             puts Rainbow("Name:         #{brewery.name}").lightgoldenrod.bright
-            #puts ""
             puts Rainbow("Brewery Type: #{brewery.brewery_type}").gold
             puts Rainbow("Street:       #{brewery.street}").yellow
             puts Rainbow("City:         #{brewery.city}").goldenrod
@@ -90,7 +90,7 @@ class CLI
             puts Rainbow("Country:      #{brewery.country}").peru
             puts Rainbow("Phone:        #{brewery.phone}").darkgoldenrod
             puts Rainbow("Website Url:  #{brewery.website_url}").sienna
-            puts Rainbow("_________________________________________________").saddlebrown
+            puts Rainbow("_______________________________________________________________").saddlebrown
             puts ""
             puts Rainbow("If you would like to view your brewery options again, enter '1'.").palegoldenrod
             puts Rainbow("If you would like to leave the Beer Hub, enter '2'.").palegoldenrod
