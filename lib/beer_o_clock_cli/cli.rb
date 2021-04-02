@@ -15,7 +15,6 @@ class CLI
     end
 
     def start
-        #Brewery.intro_logo
         puts ""
         puts Rainbow("Hey mate! Welcome to the Beer Hub! 🍺").goldenrod.bright
         puts ""

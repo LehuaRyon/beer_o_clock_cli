@@ -20,29 +20,5 @@ class Brewery
     def self.find_brewery(brewery_name)
         self.all.find {|brewery| brewery.name.downcase == brewery_name || brewery.name == brewery_name} 
     end
-  
-    # def self.intro_logo
-    #     puts " 
-    #                                 ___                                  
-    #                              .'     '.                               
-    #                             /         \          oOoOo               
-    #                            |           |      ,==|||||               
-    #                             \         /      _|| |||||               
-    #                               '.___.'    _.-'^|| |||||               
-    #                             __/_______.-'     '==HHHHH               
-    #                        _.-'` /                   """""               
-    #                     .-'     /   oOoOo                                
-    #                     `-._   / ,==|||||                                
-    #                         `-/,_|| |||||                                
-    #                          /  ^|| |||||                                
-    #                         /    '==HHHHH                                
-    #                        /________"""""                                
-    #                        `\       `\                                   
-    #                          \        `\   /                             
-    #                                    `\/                              
-    #                           /                                          
-    #                          /                                           
-    #                         /_____                             "                                      
-    # end
 
 end 

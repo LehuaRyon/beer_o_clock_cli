@@ -1,6 +1,6 @@
 # BeerOClockCli
 
-Welcome to the Beer O'Clock Gem! This gem was developed for the Phase 1 CLI Project of the Online Part-Time Software Engineering course at Flatiron School.  I developed this gem to let users sift through a list of various breweries in the United States, using information from an API, and pick one or more breweries of their liking to find out more details about them. 
+Welcome to the Beer O'Clock Gem! This gem was developed for the Phase 1 CLI Project of the Online Part-Time Software Engineering course at Flatiron School.  I developed this gem to let users sift through a list of various breweries in California, using information from the Open Brewery Database API, and pick one or more breweries of their liking to find out more details about them. 
 
 ## Installation
 
@@ -24,7 +24,7 @@ To run the CLI:
 
 ## Usage
 
-Once you execute the bin file './bin/run', you will be prompted to enter your name or exit the application. Once you enter your name, you can enter the corresponding number to list locations of various breweries in the United States or exit.  If you choose to see a list a breweries, you can type in the brewery name to bring up details about that specific brewery.  After viewing those details, you have the option to see the brewery list again in order to view another brewery's details or exit using the same corresponding numbers from before.
+Once you execute the bin file './bin/run', you will be prompted to enter your name or exit the application. Once you enter your name, you can enter the corresponding number to list locations of various breweries in California or exit.  If you choose to see a list a breweries, you can type in the brewery name to bring up details about that specific brewery.  After viewing those details, you have the option to see the brewery list again in order to view another brewery's details or exit using the same corresponding numbers from before.
 
 ## Development
 
