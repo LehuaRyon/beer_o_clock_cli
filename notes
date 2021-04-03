@@ -1,35 +1,299 @@
-API - application program interface
-    - consuming api means we hit certain parts of API where theres info & bring that info into our own app
-    - help save us code, reusing existing code and faster for optimizing our app
-Directory: Project folder, belongs on computer - documentation
-Cloud: Github, repository, push project into so available online
+Project Requirements:
 
-1. Build CLI
-2. Welcome user, prompt to either select a list, or tell exit if want (1 interaction)
-3. if they select list, print the list of breweries
-    1. brewery name etc.
-4. they can select brewery by name and print details of that brewery (second interaction)
-5. if they select exit, tell goodbye, exit program
-6. What if user wants to go back and see another brewery's details?
-    Don't make them exit and then re-run it
-
-*Prompt user to select something twice, and print out something based on those selections
+- Provide a CLI (Links to an external site.)
+- Your CLI application (Links to an external site.) must provide access to data from a web page.
+- The data provided must go at least one level deep. A "level" is where a user can make a choice and then get detailed information about their choice.
+- Your CLI application should not be too similar to the Ruby final projects (Music Library CLI, Tic-Tac-Toe with AI, Student Scraper). Also, please refrain from using Kickstarter (Links to an external site.) as that was used for the scraping 'code along'.
+- Use good OO design patterns. You should be creating a collection of objects, not hashes, to store your data. Pro Tip: Avoid scraping data more than once per web page - utilize objects you have already created. It will speed up your program!
 
 What will your app do?
+    My application goes two levels deep:
+    1. Prompts the user to enter a number to receive a list of breweries or exit.
+    2. Once the list appears, the user is prompted to either enter a brewery name to find out more details about that brewery or exit
+    3. Brewery details print out and the user is prompted once again to see the brewery list to find out details about another brewery or exit
 
 What is the user experience?
+    1. Welcome the user
+    2. Prompt user to input his/her name or exit
+    3. Prompt user to input a number to either see all CA breweries or exit
+    4. Display the most breweries possible alphabetically
+    5. Prompt user to input a brewery name to see its details or exit
+    5. Display name, brewery type, location, phone number, and website
+    6. Prompt user to input a number either to see all CA breweries again to look at another brewery's details or exit
 
 Where will you get your data from?
+    API Base URL: https://www.openbrewerydb.org/
+    Description: A collection of open breweries, cideries, brewpubs, and bottleshops in the United States
+    Extension: https://api.openbrewerydb.org/breweries?by_state=california&per_page=50
+        This link shows only 50 (that's the max able to be shown) CA breweries in alphabetical order
 
-https://www.openbrewerydb.org/
-    https://www.openbrewerydb.org/documentation/01-listbreweries
 What will you need to do with the data once you've got it?
+    - Instantiate new brewery objects with selected attributes & save those objects in @@all array
+        - List all breweries in numbered list with name and state
+        - Find a brewery object by its name
+        - List values of each key for each attribute of a brewery when brewery name is chosen
 
 What classes will you be using?
     3 classes: (separation of responsibilities)
     CLI - controller - communicates with my user
-    brewery - where objects are created & stored for user display
-    API - bring in external data, consume api here & instantiate my objects
+    Brewery - objects - where objects are created & stored for user display
+    API - gets data - brings in external data, consume api, instantiate my objects
 
 How will you display data one level deep to the user?
+    1st Level: List of CA breweries
+    2nd Level: Details of a specific CA brewery
 
+
+
+run:
+#!/usr/bin/env ruby
+    - shebang line (need in any file using ruby code, but not telling the file you're a ruby file with .rb)
+        - tells environment its not ruby file
+        - but going to be using ruby code
+        - so load into environment
+    - lets the user run the cli on any version of ruby they have on their computer
+    - point of entry, the "door" to my app
+
+require_relative '../lib/environment.rb'
+
+CLI.new.run
+    - new session, starting a new instance of CLI class & invoke run method in it
+    - done session, close/delete instance of CLI
+
+
+
+environment.rb:
+require "bundler"
+Bundler.require
+    - dont need anymore:
+    - require "pry"
+    - require "rest-client"
+    - require "json"
+    - require "rainbow"
+    - require "tty-prompt"
+    - require "require_all"
+
+require_all './lib/beer_o_clock_cli'
+    don't need anymore:
+    - require_relative "./beer_o_clock_cli/api.rb/
+    - require_relative "./beer_o_clock_cli/cli.rb/
+    - require_relative "./beer_o_clock_cli/brewery.rb/
+
+
+
+api.rb:
+class API (application program interface)
+    - consuming api means we hit certain parts of the API where there's info & bring that info into our own app
+    - help save us code, reusing code & faster for optimizing app
+    def self.get_data
+        response = RestClient.get("https://api.openbrewerydb.org/breweries?by_state=california&per_page=50")
+            - call out to external API endpoint to consume all breweries, submit request to get data
+        breweries_array = JSON.parse(response).each{|brewery| Brewery.new(brewery)}
+            - use JSON to parse response's string body (things over internet communicate in strings, not hashes & arrays)
+            - the return value is array stored in breweries_array
+            - instantiate a new brewery ruby objects with each brewery from array
+            - above, brewery= hash of attributes, when iterated over breweries_array
+    end
+end
+
+
+
+brewery.rb:
+class Brewery
+    -model object
+    attr_accessor :name, :brewery_type, :street, :city, :state, :postal_code, :country, :phone, :website_url
+        - creating setters & getters for each property I'm getting from API call
+
+    @@all = []
+        - a way to save each brewery object made
+
+    def initialize(attributes_hash)
+         - initializing using mass asssignment
+        attributes_hash.each {|key, value| self.send("#{key}=", value) if self.respond_to?("#{key}=")}
+            - if key exists, create it and set the value to it
+            - since hash gives more attributes than we want to use in app, ignore attributes w/o setters & getters
+            - use send method to create instance variables, keys, and their values
+                - shorter than doing this (also a hassle with more properties than this):
+                    def initialize(name, brewery_type, street, city, state, postal_code, country, phone, website_url)
+                        @name = name
+                        @brewery_type = brewery_type
+                        @street = street
+                        @city = city
+                        @state = state
+                        @postal_code = postal_code
+                        @country = country
+                        @phone = phone
+                        @website_url = website_url
+                    end
+        save
+    end
+
+    def save
+        @@all << self
+            - new brewery objects get stores in @@all array
+    end
+
+    def self.all
+        @@all
+    end
+    
+    def self.find_brewery(brewery_name)
+        self.all.find {|brewery| brewery.name.downcase == brewery_name || brewery.name == brewery_name} 
+            - iterate over brewery array, find brewery with name attribute that matches brewery name passed into this method
+            - find returns first instance match
+            - lowercase brewery name or capitalized brewery name
+    end
+end 
+
+
+
+cli.rb:
+class CLI
+   - only place of communication between user & data
+
+    def initialize
+        @prompt = TTY::Prompt.new
+            - in order to use tty_prompt gem I had to initialize a new instance of it
+            - stored that instance in a instance variable
+    end
+
+    def run
+        - procedural ruby, going down the list of calling certain methods
+        system "clear"
+            - clears the terminal over everything previously before starting the program
+        start
+            - once a new session is instantiated, invoke start method then greet method
+        greet(user_input)
+    end
+
+    def user_input
+        gets.strip
+            - stores users input in method
+            - strip deletes anything before and after whatever user enters
+                - chomp only deletes anything after whatever user enters
+    end
+
+    def start
+        puts ""
+        puts Rainbow("Hey mate! Welcome to the Beer Hub! 🍺").goldenrod.bright
+        puts ""
+        puts Rainbow("Are you trying to find the next spot to grab a brewski?").palegoldenrod
+        puts Rainbow("If so, what's your name? If not, enter 'exit'.").palegoldenrod
+        API.get_data
+            - collect API data & get it ready for this app
+    end
+
+    def greet(name)
+        sleep(0.5)
+            - creates time between showing user next message
+            - conditional statement if/else
+        if name == "exit"
+            goodbye
+        else
+            puts ""
+            puts Rainbow("We're happy to have you #{name}.").darkgoldenrod
+            puts ""
+            puts Rainbow("To look at some location options for your next drink, enter '1'.").palegoldenrod
+            puts Rainbow("To leave the Beer Hub, enter '2'.").palegoldenrod
+            menu
+        end
+            - could not place an invalid_entry method here because computer can't tell difference between actual name & invalid word
+    end
+
+    def menu
+        puts ""
+        input = @prompt.enum_select(Rainbow("What would you lke to do?").darkgoldenrod, [Rainbow("See a List of Breweries").palegoldenrod, Rainbow("Exit").palegoldenrod])
+        - tty_prompt turns this into a numbered choice drop down menu
+        - conditional statement if/else, execute based off of input number, 1 or 2
+        if input == Rainbow("See a List of Breweries").palegoldenrod
+            breweries_list
+        else 
+            goodbye
+                - never call menu method after goodbye method bc user wants to exit program, not stay in it
+        end
+    end
+
+    def breweries_list
+        sleep(1)
+        puts ""
+        Brewery.all.each.with_index(1) do |brewery, index|
+            - iterate over @@all array and access each brewery
+                - each brewery had attributes, so list by name and state only
+            - .each_with_index would start at 0, instead of 1 because its an array
+            - create incrementing numbered list, use index location of array
+                puts Rainbow("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~").saddlebrown
+                puts ""
+                puts Rainbow("#{index}. #{brewery.name}, #{brewery.state}").gold
+                puts ""
+            end
+        brewery_chosen
+    end
+
+    def brewery_chosen
+        sleep(0.5)
+        puts ""
+        puts Rainbow("Which brewery would you like details about? Please enter its name:").palegoldenrod
+        puts Rainbow("If you would like to leave the Beer Hub, enter 'exit'.").palegoldenrod
+        choice = user_input
+            - conditional statement if/else,
+        if Brewery.find_brewery(choice)
+            brewery = Brewery.find_brewery(choice)
+                - if users input = brewery object
+        else
+            brewery = choice
+                - any word at this point equals brewery variable
+        end    
+        brewery_details(brewery)  
+    end
+
+    def brewery_details(brewery)
+        sleep(1)
+        if brewery == "exit"
+            - if users input, brewery, is the string "exit"
+            goodbye
+        elsif  brewery.class == Brewery
+            - if users input brewery, is a brewery object, brewery.class = Brewery would be true
+            puts Rainbow("_______________________________________________________________").saddlebrown
+            puts ""
+            puts Rainbow("Name:         #{brewery.name}").lightgoldenrod.bright
+            puts Rainbow("Brewery Type: #{brewery.brewery_type}").gold
+            puts Rainbow("Street:       #{brewery.street}").yellow
+            puts Rainbow("City:         #{brewery.city}").goldenrod
+            puts Rainbow("State:        #{brewery.state}").khaki
+            puts Rainbow("Postal Code:  #{brewery.postal_code}").darkkhaki
+            puts Rainbow("Country:      #{brewery.country}").peru
+            puts Rainbow("Phone:        #{brewery.phone}").darkgoldenrod
+            puts Rainbow("Website Url:  #{brewery.website_url}").sienna
+            puts Rainbow("_______________________________________________________________").saddlebrown
+            puts ""
+            puts Rainbow("If you would like to view your brewery options again, enter '1'.").palegoldenrod
+            puts Rainbow("If you would like to leave the Beer Hub, enter '2'.").palegoldenrod
+            menu
+                - 
+        else
+            puts ""
+            puts Rainbow("❕ Invalid entry, try again. ❕").darkgoldenrod
+            brewery_chosen
+        end
+    end
+
+    def goodbye
+        sleep(0.5)
+        puts ""
+        puts Rainbow("We hope to see you again soon.").goldenrod.bright
+        puts Rainbow("       🍻 Cheers! 🍻").goldenrod.bright
+        puts ""
+            - needs "puts" be returning only returns to machine and doesn't print out
+    end
+
+    def invalid_entry
+        puts ""
+        puts Rainbow("❕ Invalid entry, try again. ❕").darkgoldenrod
+        puts ""
+        puts Rainbow("Enter 'list' to see a list of breweries.").palegoldenrod
+        puts Rainbow("Enter 'exit' to leave the Beer Hub.").palegoldenrod
+        puts ""
+        sleep(3)
+        menu
+    end
+end

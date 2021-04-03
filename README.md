@@ -1,6 +1,6 @@
 # BeerOClockCli
 
-Welcome to the Beer O'Clock Gem! This gem was developed for the Phase 1 CLI Project of the Online Part-Time Software Engineering course at Flatiron School.  I developed this gem to let users sift through a list of various breweries in California, using information from the Open Brewery Database API, and pick one or more breweries of their liking to find out more details about them. 
+Welcome to the Beer O'Clock Gem! This application was developed for the Phase 1 CLI Project of the Online Part-Time Software Engineering course at Flatiron School.  I developed this gem to let users sift through a list of various breweries in California, using information from the Open Brewery Database API, and pick one or more breweries of their liking to find out more details about them. 
 
 ## Installation
 

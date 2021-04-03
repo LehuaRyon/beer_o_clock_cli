@@ -77,7 +77,7 @@ class CLI
         sleep(1)
         if brewery == "exit"
             goodbye
-        elsif  brewery.class == Brewery # if brewery object.class = brewwery
+        elsif  brewery.class == Brewery
             puts Rainbow("_______________________________________________________________").saddlebrown
             puts ""
             puts Rainbow("Name:         #{brewery.name}").lightgoldenrod.bright
