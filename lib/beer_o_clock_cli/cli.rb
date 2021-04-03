@@ -109,15 +109,4 @@ class CLI
         puts ""
     end
 
-    def invalid_entry
-        puts ""
-        puts Rainbow("❕ Invalid entry, try again. ❕").darkgoldenrod
-        puts ""
-        puts Rainbow("Enter 'list' to see a list of breweries.").palegoldenrod
-        puts Rainbow("Enter 'exit' to leave the Beer Hub.").palegoldenrod
-        puts ""
-        sleep(3)
-        menu
-    end
-
 end
