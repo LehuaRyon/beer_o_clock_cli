@@ -148,7 +148,7 @@ end
 
 
 cli.rb:
-class CLI
+class CLI (command line interface)
    - only place of communication between user & data
 
     def initialize
