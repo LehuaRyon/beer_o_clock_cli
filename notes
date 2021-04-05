@@ -25,7 +25,7 @@ Where will you get your data from?
     API Base URL: https://www.openbrewerydb.org/
     Description: A collection of open breweries, cideries, brewpubs, and bottleshops in the United States
     Extension: https://api.openbrewerydb.org/breweries?by_state=california&per_page=50
-        This link shows only 50 (that's the max able to be shown) CA breweries in alphabetical order
+        - This link shows only 50 (that's the max able to be shown) CA breweries in alphabetical order
 
 What will you need to do with the data once you've got it?
     - Instantiate new brewery objects with selected attributes & save those objects in @@all array
@@ -37,7 +37,7 @@ What classes will you be using?
     3 classes: (separation of responsibilities)
     CLI - controller - communicates with my user
     Brewery - objects - where objects are created & stored for user display
-    API - gets data - brings in external data, consume api, instantiate my objects
+    API - gets data - brings in external data, consume api, instantiates my objects
 
 How will you display data one level deep to the user?
     1st Level: List of CA breweries
@@ -92,7 +92,7 @@ class API (application program interface)
             - use JSON to parse response's string body (things over internet communicate in strings, not hashes & arrays)
             - the return value is array stored in breweries_array
             - instantiate a new brewery ruby objects with each brewery from array
-            - above, brewery= hash of attributes, when iterated over breweries_array
+            - above, brewery = hash of attributes, when iterated over breweries_array
     end
 end
 
@@ -105,14 +105,14 @@ class Brewery
         - creating setters & getters for each property I'm getting from API call
 
     @@all = []
-        - a way to save each brewery object made
+        - a way to save each brewery objects made
 
     def initialize(attributes_hash)
-         - initializing using mass asssignment
+         - initializing using mass assignment
         attributes_hash.each {|key, value| self.send("#{key}=", value) if self.respond_to?("#{key}=")}
             - if key exists, create it and set the value to it
             - since hash gives more attributes than we want to use in app, ignore attributes w/o setters & getters
-            - use send method to create instance variables, keys, and their values
+            - use .send method to create instance variables, keys, and their values
                 - shorter than doing this (also a hassle with more properties than this):
                     def initialize(name, brewery_type, street, city, state, postal_code, country, phone, website_url)
                         @name = name
@@ -202,7 +202,7 @@ class CLI (command line interface)
 
     def menu
         puts ""
-        input = @prompt.enum_select(Rainbow("What would you lke to do?").darkgoldenrod, [Rainbow("See a List of Breweries").palegoldenrod, Rainbow("Exit").palegoldenrod])
+        input = @prompt.enum_select(Rainbow("What would you like to do?").darkgoldenrod, [Rainbow("See a List of Breweries").palegoldenrod, Rainbow("Exit").palegoldenrod])
         - tty_prompt turns this into a numbered choice drop down menu
         - conditional statement if/else, execute based off of input number, 1 or 2
         if input == Rainbow("See a List of Breweries").palegoldenrod

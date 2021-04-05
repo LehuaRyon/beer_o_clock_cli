@@ -39,7 +39,7 @@ class CLI
 
     def menu
         puts ""
-        input = @prompt.enum_select(Rainbow("What would you lke to do?").darkgoldenrod, [Rainbow("See a List of Breweries").palegoldenrod, Rainbow("Exit").palegoldenrod])
+        input = @prompt.enum_select(Rainbow("What would you like to do?").darkgoldenrod, [Rainbow("See a List of Breweries").palegoldenrod, Rainbow("Exit").palegoldenrod])
         if input == Rainbow("See a List of Breweries").palegoldenrod
             breweries_list
         else 
