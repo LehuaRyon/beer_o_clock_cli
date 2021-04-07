@@ -21,4 +21,12 @@ class Brewery
         self.all.find {|brewery| brewery.name.downcase == brewery_name || brewery.name == brewery_name} 
     end
 
+    def self.find(index)
+        self.all[index]
+    end
+
+    # def self.sort_by_name
+    #     self.all.sort_by{|brewery| brewery.name}
+    # end
+
 end 

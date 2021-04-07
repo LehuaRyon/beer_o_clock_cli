@@ -218,7 +218,7 @@ class CLI (command line interface)
         puts ""
         Brewery.all.each.with_index(1) do |brewery, index|
             - iterate over @@all array and access each brewery
-                - each brewery had attributes, so list by name and state only
+                - each brewery had attributes, so list by name and state attributes only
             - .each_with_index would start at 0, instead of 1 because its an array
             - create incrementing numbered list, use index location of array
                 puts Rainbow("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~").saddlebrown
@@ -238,7 +238,7 @@ class CLI (command line interface)
             - conditional statement if/else,
         if Brewery.find_brewery(choice)
             brewery = Brewery.find_brewery(choice)
-                - if users input = brewery object
+                - if users input = brewery name
         else
             brewery = choice
                 - any word at this point equals brewery variable

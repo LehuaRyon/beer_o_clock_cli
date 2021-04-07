@@ -65,6 +65,13 @@ class CLI
         puts Rainbow("Which brewery would you like details about? Please enter its name:").palegoldenrod
         puts Rainbow("If you would like to leave the Beer Hub, enter 'exit'.").palegoldenrod
         choice = user_input
+        new_choice = choice.to_i-1
+        if Brewery.find(new_choice)
+            brewery = Brewery.find(new_choice)
+        else
+            brewery = new_choice
+        end
+        # choice = user_input
         if Brewery.find_brewery(choice)
             brewery = Brewery.find_brewery(choice)
         else
