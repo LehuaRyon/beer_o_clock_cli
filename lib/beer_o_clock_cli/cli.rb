@@ -66,17 +66,19 @@ class CLI
         puts Rainbow("If you would like to leave the Beer Hub, enter 'exit'.").palegoldenrod
         choice = user_input
         new_choice = choice.to_i-1
-        if Brewery.find(new_choice)
-            brewery = Brewery.find(new_choice)
-        else
-            brewery = new_choice
-        end
-        # choice = user_input
         if Brewery.find_brewery(choice)
             brewery = Brewery.find_brewery(choice)
+        elsif Brewery.find(new_choice) 
+            brewery = Brewery.find(new_choice)
         else
-            brewery = choice
-        end    
+            brewery = new_choice || choice
+        end
+        # choice = user_input
+        # if Brewery.find_brewery(choice)
+        #     brewery = Brewery.find_brewery(choice)
+        # else
+        #     brewery = choice
+        # end    
         brewery_details(brewery)  
     end
 
