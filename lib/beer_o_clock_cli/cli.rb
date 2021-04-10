@@ -65,28 +65,33 @@ class CLI
         puts Rainbow("Which brewery would you like details about? Please enter its name:").palegoldenrod
         puts Rainbow("If you would like to leave the Beer Hub, enter 'exit'.").palegoldenrod
         choice = user_input
-        new_choice = choice.to_i-1
         if Brewery.find_brewery(choice)
             brewery = Brewery.find_brewery(choice)
-        elsif Brewery.find(new_choice) 
-            brewery = Brewery.find(new_choice)
         else
-            brewery = new_choice || choice
-        end
-        # choice = user_input
-        # if Brewery.find_brewery(choice)
-        #     brewery = Brewery.find_brewery(choice)
-        # else
-        #     brewery = choice
-        # end    
+            brewery = choice
+        end    
         brewery_details(brewery)  
+        # if choice.downcase == "exit"
+        #     goodbye
+        # elsif Brewery.find_brewery(choice)
+        #     brewery = Brewery.find_brewery(choice)
+        #     brewery_details(brewery)  
+        # elsif choice.to_i.between?(1, Brewery.all.length)
+        #     new_choice = choice.to_i - 1
+        #     # binding.pry
+        #     brewery = Brewery.find(new_choice)
+        #     brewery_details(brewery)  
+        # else
+        #     invalid
+        #     menu
+        # end
     end
 
     def brewery_details(brewery)
         sleep(1)
         if brewery == "exit"
             goodbye
-        elsif  brewery.class == Brewery
+        elsif  brewery.class == Brewery 
             puts Rainbow("_______________________________________________________________").saddlebrown
             puts ""
             puts Rainbow("Name:         #{brewery.name}").lightgoldenrod.bright
@@ -108,6 +113,10 @@ class CLI
             puts Rainbow("❕ Invalid entry, try again. ❕").darkgoldenrod
             brewery_chosen
         end
+        # else
+        # invalid
+        # brewery_chosen
+        # end
     end
 
     def goodbye
@@ -116,6 +125,11 @@ class CLI
         puts Rainbow("We hope to see you again soon.").goldenrod.bright
         puts Rainbow("       🍻 Cheers! 🍻").goldenrod.bright
         puts ""
+    end
+
+    def invalid 
+        puts ""
+        puts Rainbow("❕ Invalid entry, try again. ❕").darkgoldenrod
     end
 
 end
